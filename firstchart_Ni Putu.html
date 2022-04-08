@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <title>Ni Putu Putri Marinda Pradnyandari - 06311940000049</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<!-- Write your comments here -->
+
+<body>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        // Change paragraph:
+        const labels = [
+            'China',
+            'Indonesia',
+            'Malaysia',
+            'Singapore',
+            'Thailand',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Net Sale Average',
+                backgroundColor: 'rgb( 0, 0, 125)',
+                borderColor: 'rgb( 0, 0, 35 )',
+                borderWidth: 4,
+                data: [34.65, 22.96, 15.30, 47.98, 25.34], // isi data
+                stack: 'combined',
+                type : 'bar'
+            },
+            {
+                label: 'Commision Average',
+                backgroundColor: 'rgb(255, 99, 50)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [4.58, 3.05, 1.64, 10.72, 5.48],
+                borderWidth: 4,
+                stack:'combined'
+            }]
+        };
+
+        const config = {
+        type: 'line',
+        data: data,
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Chart.js Stacked Line/Bar Chart'
+                 }
+             },
+            scales: {
+             y: {
+                 stacked: true
+                }
+              },
+            animations: {
+             y: {
+                 easing: 'easeInOutElastic',
+                     from: (ctx) => {
+                     if (ctx.type === 'data') {
+                     if (ctx.mode === 'default' && !ctx.dropped) {
+                     ctx.dropped = true;
+                     return 0;
+                    }
+                  }
+                }
+              }
+            }
+        }
+        };
+    </script>
+
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+
+</body>
+
+</html>
